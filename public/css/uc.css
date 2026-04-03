@@ -1,0 +1,143 @@
+body {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+}
+.uc-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 20px;
+}
+
+.uc-box {
+    width: 100%;
+    max-width: 760px;
+    padding: 32px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    color: #fff;
+}
+
+.uc-header {
+    margin-bottom: 24px;
+}
+
+.uc-box h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.uc-subtitle {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.uc-success {
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: rgba(55, 190, 120, 0.18);
+    border: 1px solid rgba(55, 190, 120, 0.35);
+}
+
+.uc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.uc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    transition: 0.2s ease;
+}
+
+.uc-item:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-1px);
+}
+
+.uc-arrow {
+    font-size: 18px;
+    opacity: 0.75;
+}
+
+.uc-empty {
+    padding: 18px;
+    border-radius: 16px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.uc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.uc-form label {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.uc-form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.uc-form input {
+    flex: 1;
+    border: none;
+    outline: none;
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 15px;
+}
+
+.uc-form button {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 22px;
+    background: #ffffff;
+    color: #5c4bc9;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.uc-form button:hover {
+    background: #f3f0ff;
+}
+
+@media (max-width: 640px) {
+    .uc-box {
+        padding: 22px;
+    }
+
+    .uc-box h1 {
+        font-size: 32px;
+    }
+
+    .uc-form-row {
+        flex-direction: column;
+    }
+
+    .uc-form button {
+        width: 100%;
+    }
+}
