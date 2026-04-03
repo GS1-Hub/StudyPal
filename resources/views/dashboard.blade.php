@@ -17,9 +17,13 @@
                 class="btn btn-light btn-lg px-5 fw-semibold">
                 Calendar
             </button>
-            <button type="button" class="btn btn-light btn-lg px-5 fw-semibold">Course Units</button>
+           <button onclick="window.location.href='/uc'"
+                class="btn btn-light btn-lg px-5 fw-semibold">
+                Course Units
+            </button>
             <button type="button" class="btn btn-light btn-lg px-5 fw-semibold">Settings</button>
         </div>
     </div>
 </body>
 </html>
+
