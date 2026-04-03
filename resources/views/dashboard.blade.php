@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>StudyPal - Dashboard</title>
+    <link rel="icon" href="{{ asset('img/logoico.ico') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 </head>
