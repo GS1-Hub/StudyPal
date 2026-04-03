@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalendarController;
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login');
 });
 
