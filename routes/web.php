@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalendarController;
 
 Route::get('/login', function () {
     return view('login');
@@ -17,4 +18,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/register', [AuthController::class, 'showRegister']); 
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/calendar', [CalendarController::class, 'showCalendar']);
 

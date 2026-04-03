@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>StudyPal - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,11 +12,13 @@
         <img src="{{ asset('img/logopng.png') }}" alt="StudyPal" style="height: 400px;">
 
         <div class="d-flex flex-column gap-3 ms-5">
-            <button type="button" class="btn btn-light btn-lg px-5 fw-semibold">Calendar</button>
+            <button onclick="window.location.href='/calendar'"
+                class="btn btn-light btn-lg px-5 fw-semibold">
+                Calendar
+            </button>
             <button type="button" class="btn btn-light btn-lg px-5 fw-semibold">Course Units</button>
             <button type="button" class="btn btn-light btn-lg px-5 fw-semibold">Settings</button>
         </div>
     </div>
 </body>
-
 </html>
