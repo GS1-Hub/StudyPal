@@ -2,41 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\UC;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class UCController extends Controller
+class TaskController extends Controller
 {
-    public function index()
-    {
-        $ucs = UC::where('user_id', Auth::id())->get();
-        return view('uc', compact('ucs'));
-    }
-
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'uc_id' => 'required|exists:ucs,id',
         ]);
 
-        UC::create([
+        Task::create([
             'name' => $request->name,
-            'user_id' => Auth::id()
+            'uc_id' => $request->uc_id,
         ]);
 
-        return redirect()->route('ucs.index')->with('success', 'UC created!');
+        return redirect()->route('ucs.show', $request->uc_id)->with('success', 'Task criada!');
     }
-
     public function show($id)
     {
         $uc = UC::findOrFail($id);
         $tasks = $uc->tasks;
         return view('uc_show', compact('uc', 'tasks'));
-    }
-    
-    public function user()
-    {
-        return $this->belongsTo(UC::class);
     }
 }
