@@ -18,7 +18,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
-Route::get('/register', [AuthController::class, 'showRegister']); 
+Route::get('/register', [AuthController::class, 'showRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/calendar', [CalendarController::class, 'showCalendar']);
@@ -31,4 +31,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/task', [TaskController::class, 'store'])->name('tasks.store');
+});
+
+Route::get('/calendar', [CalendarController::class, 'index'])->middleware('auth')->name('calendar');
+Route::middleware('auth')->group(function () {
+    Route::get('/tasks/unscheduled', [TaskController::class, 'unscheduled'])->name('tasks.unscheduled');
+    Route::put('/task/{id}/date', [TaskController::class, 'updateDate'])->name('tasks.updateDate');
 });
