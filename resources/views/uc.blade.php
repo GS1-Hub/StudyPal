@@ -41,7 +41,9 @@
                     <button type="submit">Create</button>
                 </div>
             </form>
+            <a href="{{ route('dashboard') }}" class="back-link">← Back</a>
         </div>
     </div>
+     
 </body>
 </html>
