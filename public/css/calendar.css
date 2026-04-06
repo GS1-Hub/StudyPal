@@ -95,3 +95,18 @@ h1 {
 .btn-cancel:hover {
     background: #ddd;
 }
+
+.btn-save {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #764ba2;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-save:hover {
+    opacity: 0.85;
+}

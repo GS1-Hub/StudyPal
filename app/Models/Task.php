@@ -11,7 +11,8 @@ class Task extends Model
         'name',
         'uc_id',
         'due_date',
-        'completed'
+        'completed',
+        'notes'
     ];
 
     public function uc()

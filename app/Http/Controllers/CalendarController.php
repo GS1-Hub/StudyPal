@@ -18,7 +18,11 @@ class CalendarController extends Controller
                 'title' => $t->name,
                 'start' => $t->due_date,
                 'color' => '#764ba2',
-                'id' => $t->id
+                'id' => $t->id,
+                'extendedProps' => [
+                    'uc' => $t->uc->name,
+                    'notes' => $t->notes
+                ]
             ];
         });
 

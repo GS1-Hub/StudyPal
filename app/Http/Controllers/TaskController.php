@@ -48,4 +48,13 @@ class TaskController extends Controller
 
         return response()->json($tasks);
     }
+
+    public function updateNotes(Request $request, $id)
+    {
+        $task = Task::findOrFail($id);
+        $task->notes = $request->notes;
+        $task->save();
+
+        return response()->json(['success' => true]);
+    }
 }

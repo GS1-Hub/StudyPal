@@ -1,8 +1,10 @@
 var selectedDate = null;
+var selectedTaskId = null;
+var calendar;
 
 document.addEventListener("DOMContentLoaded", function () {
     var calendarEl = document.getElementById("calendar");
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: "dayGridMonth",
         headerToolbar: {
             left: "prev,next today",
@@ -13,6 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
         dateClick: function (info) {
             selectedDate = info.dateStr;
             openModal(info.dateStr);
+        },
+        eventClick: function (info) {
+            selectedTaskId = info.event.id;
+            console.log("Task ID:", selectedTaskId);
+            document.getElementById("task-modal-title").textContent =
+                info.event.title;
+            document.getElementById("task-modal-uc").textContent =
+                "📚 " + (info.event.extendedProps.uc || "");
+            document.getElementById("task-notes").value =
+                info.event.extendedProps.notes || "";
+            document.getElementById("task-modal").classList.remove("hidden");
         },
     });
     calendar.render();
@@ -78,3 +91,35 @@ function assignTask(taskId) {
 function closeModal() {
     document.getElementById("modal").classList.add("hidden");
 }
+
+window.closeTaskModal = function () {
+    document.getElementById("task-modal").classList.add("hidden");
+    selectedTaskId = null;
+};
+
+window.saveNotes = function () {
+    var notes = document.getElementById("task-notes").value;
+    fetch("/task/" + selectedTaskId + "/notes", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": csrfToken,
+        },
+        body: JSON.stringify({ notes: notes }),
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            window.closeTaskModal();
+            var msg = document.createElement("div");
+            msg.textContent = "✅ Notes saved!";
+            msg.style.cssText =
+                "position:fixed;bottom:24px;right:24px;background:#764ba2;color:#fff;padding:12px 20px;border-radius:8px;font-size:0.95rem;z-index:9999;";
+            document.body.appendChild(msg);
+            setTimeout(() => location.reload(), 1500);
+        })
+        .catch((err) => console.log("erro:", err));
+};
+
+window.closeModal = function () {
+    document.getElementById("modal").classList.add("hidden");
+};

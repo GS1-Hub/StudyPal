@@ -38,3 +38,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/tasks/unscheduled', [TaskController::class, 'unscheduled'])->name('tasks.unscheduled');
     Route::put('/task/{id}/date', [TaskController::class, 'updateDate'])->name('tasks.updateDate');
 });
+
+Route::put('/task/{id}/notes', [TaskController::class, 'updateNotes'])->name('tasks.updateNotes');

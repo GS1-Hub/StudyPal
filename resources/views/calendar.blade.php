@@ -27,6 +27,19 @@
         </div>
     </div>
 
+    <div id="task-modal" class="modal hidden">
+        <div class="modal-box">
+            <h2 id="task-modal-title"></h2>
+            <p id="task-modal-uc" style="color: #764ba2; font-weight: bold; margin-bottom: 16px;"></p>
+            <label style="color: #666; font-size: 0.9rem;">Notes</label>
+            <textarea id="task-notes" rows="4" style="width:100%; margin-top: 8px; padding: 10px; border-radius: 8px; border: 1px solid #ddd; font-size: 0.95rem; resize: vertical;"></textarea>
+            <div style="display: flex; gap: 10px; margin-top: 16px;">
+                <button onclick="saveNotes()" class="btn-save">Save</button>
+                <button onclick="closeTaskModal()" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
     <script>
         var calendarEvents = @json($events);
         var csrfToken = '{{ csrf_token() }}';
