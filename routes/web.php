@@ -22,6 +22,8 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/calendar', [CalendarController::class, 'showCalendar']);
 
-Route::get('/uc', [UCController::class, 'index'])->name('ucs.index');
-Route::post('/uc', [UCController::class, 'store'])->name('ucs.store');
-Route::get('/uc/{id}', [UCController::class, 'show'])->name('ucs.show');
+Route::middleware('auth')->group(function () {
+    Route::get('/uc', [UCController::class, 'index'])->name('ucs.index');
+    Route::post('/uc', [UCController::class, 'store'])->name('ucs.store');
+    Route::get('/uc/{id}', [UCController::class, 'show'])->name('ucs.show');
+});
