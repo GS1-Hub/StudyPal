@@ -110,3 +110,46 @@ h1 {
 .btn-save:hover {
     opacity: 0.85;
 }
+
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.custom-navbar .navbar-brand {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.custom-navbar .navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    margin: 0 2px;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.custom-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.custom-navbar .navbar-toggler-icon {
+    filter: invert(1);
+}
