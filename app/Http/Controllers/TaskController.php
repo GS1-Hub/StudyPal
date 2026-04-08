@@ -85,11 +85,12 @@ class TaskController extends Controller
             ->with('uc')
             ->get()
             ->map(fn($t) => [
+                'id'    => $t->id,
                 'name'  => $t->name,
                 'uc'    => $t->uc->name,
                 'state' => $t->state,
+                'notes' => $t->notes,
             ]);
-
         return view('stats', compact('tasks', 'pending'));
     }
 }

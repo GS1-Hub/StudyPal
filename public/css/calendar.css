@@ -13,7 +13,7 @@ body {
 
 .calendar-wrapper {
     max-width: 900px;
-    margin: 40px auto;  
+    margin: 40px auto;
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
     border-radius: 16px;
@@ -110,4 +110,8 @@ h1 {
 .btn-save:hover {
     opacity: 0.85;
 }
+.btn-save   { background: #764ba2; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-doing  { background: #ed8936; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-done   { background: #48bb78; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-cancel { background: #eee; color: #555; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
 

@@ -116,3 +116,80 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.pending-item {
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pending-item:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    width: 420px;
+    max-width: 90vw;
+}
+
+.modal-box h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.modal-box #modal-uc {
+    color: #764ba2;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.modal-box #modal-state {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 14px;
+}
+
+.modal-box label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.modal-box textarea {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-save   { background: #764ba2; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-doing  { background: #ed8936; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-done   { background: #48bb78; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-cancel { background: #eee; color: #555; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
