@@ -11,9 +11,21 @@ class Task extends Model
         'name',
         'uc_id',
         'due_date',
-        'completed',
-        'notes'
+        'notes',
+        'started_at',
+        'completed_at',
     ];
+    protected $casts = [
+        'due_date'     => 'datetime',
+        'started_at'   => 'datetime',
+        'completed_at' => 'datetime',
+    ];
+    public function getStateAttribute(): string
+    {
+        if ($this->completed_at) return 'done';
+        if ($this->started_at)   return 'doing';
+        return 'todo';
+    }
 
     public function uc()
     {

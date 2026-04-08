@@ -57,4 +57,14 @@ class TaskController extends Controller
 
         return response()->json(['success' => true]);
     }
+    public function updateState(Request $request, Task $task)
+    {
+        if ($request->state === 'doing') {
+            $task->update(['started_at' => now(), 'completed_at' => null]);
+        } elseif ($request->state === 'done') {
+            $task->update(['completed_at' => now()]);
+        }
+
+        return response()->json(['ok' => true]);
+    }
 }

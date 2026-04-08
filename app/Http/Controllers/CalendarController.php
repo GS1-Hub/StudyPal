@@ -21,7 +21,10 @@ class CalendarController extends Controller
                 'id' => $t->id,
                 'extendedProps' => [
                     'uc' => $t->uc->name,
-                    'notes' => $t->notes
+                    'notes' => $t->notes,
+                    'state'       => $t->state,
+                    'started_at'  => $t->started_at,
+                    'completed_at'=> $t->completed_at,
                 ]
             ];
         });

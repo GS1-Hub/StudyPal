@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 "📚 " + (info.event.extendedProps.uc || "");
             document.getElementById("task-notes").value =
                 info.event.extendedProps.notes || "";
+
+            var state = info.event.extendedProps.state || 'todo';
+            var stateLabels = { todo: '⬜ Todo', doing: '🟠 Doing', done: '🟢 Done' };
+
+            document.getElementById("task-modal-state").textContent = stateLabels[state];
             document.getElementById("task-modal").classList.remove("hidden");
         },
     });
@@ -87,6 +92,25 @@ function assignTask(taskId) {
         location.reload();
     });
 }
+window.updateState = function(state) {
+    fetch("/task/" + selectedTaskId + "/state", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": csrfToken,
+        },
+        body: JSON.stringify({ state: state }),
+    })
+        .then((res) => res.json())
+        .then(() => {
+            window.closeTaskModal();
+            var msg = document.createElement("div");
+            msg.textContent = state === 'done' ? "✅ Task done!" : "▶ Task started!";
+            msg.style.cssText = "position:fixed;bottom:24px;right:24px;background:#764ba2;color:#fff;padding:12px 20px;border-radius:8px;font-size:0.95rem;z-index:9999;";
+            document.body.appendChild(msg);
+            setTimeout(() => location.reload(), 1500);
+        });
+};
 
 function closeModal() {
     document.getElementById("modal").classList.add("hidden");
