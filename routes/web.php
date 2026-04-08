@@ -41,3 +41,4 @@ Route::middleware('auth')->group(function () {
 
 Route::put('/task/{id}/notes', [TaskController::class, 'updateNotes'])->name('tasks.updateNotes');
 Route::put('/task/{task}/state', [TaskController::class, 'updateState']);
+Route::get('/stats', [TaskController::class, 'stats']);

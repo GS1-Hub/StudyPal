@@ -21,6 +21,10 @@
                 class="btn btn-light btn-lg px-5 fw-semibold">
                 Course Units
             </button>
+            <button onclick="window.location.href='/stats'"
+                    class="btn btn-light btn-lg px-5 fw-semibold">
+                Stats
+            </button>
         </div>
     </div>
 </body>

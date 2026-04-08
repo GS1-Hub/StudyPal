@@ -23,14 +23,12 @@ class TaskController extends Controller
 
         return redirect()->route('ucs.show', $request->uc_id)->with('success', 'Task criada!');
     }
-
     public function show($id)
     {
         $uc = UC::findOrFail($id);
         $tasks = $uc->tasks;
         return view('uc_show', compact('uc', 'tasks'));
     }
-
     public function updateDate(Request $request, $id)
     {
         $task = Task::findOrFail($id);
@@ -39,7 +37,6 @@ class TaskController extends Controller
 
         return response()->json(['success' => true]);
     }
-
     public function unscheduled()
     {
         $tasks = Task::whereHas('uc', function ($query) {
@@ -48,7 +45,6 @@ class TaskController extends Controller
 
         return response()->json($tasks);
     }
-
     public function updateNotes(Request $request, $id)
     {
         $task = Task::findOrFail($id);
@@ -66,5 +62,34 @@ class TaskController extends Controller
         }
 
         return response()->json(['ok' => true]);
+    }
+    public function stats()
+    {
+        $tasks = Task::whereHas('uc', fn($q) => $q->where('user_id', Auth::id()))
+            ->whereNotNull('started_at')
+            ->with('uc')
+            ->get()
+            ->map(function($t) {
+                $days = round($t->started_at->diffInHours($t->completed_at ?? now()) / 24, 1);
+                return [
+                    'name'  => $t->name,
+                    'uc'    => $t->uc->name,
+                    'days'  => $days,
+                    'score' => $days <= 2 ? 'good' : ($days <= 4 ? 'medium' : 'bad'),
+                    'done'  => !is_null($t->completed_at),
+                ];
+            });
+
+        $pending = Task::whereHas('uc', fn($q) => $q->where('user_id', Auth::id()))
+            ->whereNull('completed_at')
+            ->with('uc')
+            ->get()
+            ->map(fn($t) => [
+                'name'  => $t->name,
+                'uc'    => $t->uc->name,
+                'state' => $t->state,
+            ]);
+
+        return view('stats', compact('tasks', 'pending'));
     }
 }
