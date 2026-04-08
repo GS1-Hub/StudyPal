@@ -20,9 +20,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/uc">Course Units</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Settings</a>
-                    </li>
                 </ul>
             </div>
         </div>
